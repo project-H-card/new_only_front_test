@@ -8,6 +8,15 @@ class Utils {
             image.src = path;
         });
     }
+    static loadMusic(path) {
+        return new Promise(resolve => {
+            const music = new Audio();
+            music.addEventListener('canplaythrough', () => {
+                resolve(music);
+            });
+            music.src = path;
+        });
+    }
 
     static getShuffledArray(array) {
         const arrayCopy = array.slice();
@@ -22,8 +31,12 @@ class Utils {
 
 
 class Game {
-    constructor(canvasId, bg) {
+    constructor(canvasId, bg, cursorElectronic, beep, pikon) {
         this.bg = bg;
+        this.cursorElectronic = cursorElectronic;
+        this.beep = beep;
+        this.pikon = pikon;
+
         this.canvas = document.getElementById(canvasId);
         this.ctx = this.canvas.getContext('2d');
         this.currentWord = '';
@@ -37,7 +50,7 @@ class Game {
             { en: "minamotonoyoritomo", kana: "みなもとのよりとも", kanji: "源頼朝" },
             { en: "takedashingen", kana: "たけだしんげん", kanji: "武田信玄" },
             { en: "uesugikenshin", kana: "うえすぎけんしん", kanji: "上杉謙信" },
-            { en: "sakanouyenotamuramaro", kana: "さかのうえのたむらまろ", kanji: "坂上田村麻呂" },
+            { en: "sakanouenotamuramaro", kana: "さかのうえのたむらまろ", kanji: "坂上田村麻呂" },
             { en: "natsumesoseki", kana: "なつめそうせき", kanji: "夏目漱石" },
             { en: "kobodaishi", kana: "こうぼうだいし", kanji: "弘法大師" },
             { en: "hiragagennai", kana: "ひらがげんない", kanji: "平賀源内" }
@@ -94,7 +107,15 @@ class Game {
             this.wordIndex++;
             if (this.currentWord.length === this.wordIndex) {
                 this.pickNextWord();
+                this.pikon.currentTime = 0;
+                this.pikon.play();
+            } else {
+                this.cursorElectronic.currentTime = 0;
+                this.cursorElectronic.play();
             }
+        } else {
+            this.beep.currentTime = 0;
+            this.beep.play();
         }
     }
 }
@@ -102,7 +123,10 @@ class Game {
 
 const main = async () => {
     const bg = await Utils.loadImage("assets/images/overWorld_blue.webp");
-    const game = new Game('gameCanvas', bg);
+    const cursorElectronic = await Utils.loadMusic("assets/sounds/cursorElectronic.mp3");
+    const beep = await Utils.loadMusic("assets/sounds/beep.mp3");
+    const pikon = await Utils.loadMusic("assets/sounds/pikon.mp3");
+    const game = new Game('gameCanvas', bg, cursorElectronic, beep, pikon);
     game.start();
 
     document.addEventListener('keydown', event => game.handleKeydown(event));
