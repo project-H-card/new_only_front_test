@@ -1,0 +1,334 @@
+:root {
+    --rate: 10;
+    --min-font-base: 2px;
+    --ruby-rate: 0.5;
+    /* --text-storke-rate: 0.05; */
+    --text-storke-rate: 0.1;
+
+    --min-font: calc(var(--rate) * var(--min-font-base));
+    --min-ruby-font: calc(var(--min-font) * var(--ruby-rate));
+
+    --min-text-stroke: calc(var(--min-font) * var(--text-storke-rate));
+    --min-ruby-text-stroke: calc(var(--min-ruby-font) * var(--text-storke-rate));
+
+    --expand-rate: calc(90 / 63);
+}
+
+
+/* 全体的な設定 */
+
+@font-face {
+    font-family: NotoSansJP;
+    src: url("./assets/fonts/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf");
+}
+
+* {
+    margin: 0;
+    color: black;
+    font-family: NotoSansJP;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+
+body > * {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#control {
+    margin: 0 auto;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+.controlRow {
+    display: flex;
+    justify-content: center;
+}
+
+
+#cards {
+    display: flex;
+    width: max-content;
+    margin: 50px;
+}
+
+.card {
+    width: calc(63px * var(--rate) * var(--expand-rate));
+    height: calc(88px * var(--rate) * var(--expand-rate));
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardContents {
+    width: calc(63px * var(--rate));
+    height: calc(88px * var(--rate));
+    position: relative;
+    border: 1px solid white;
+}
+
+.downloadStatus {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50vw;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    background: black;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+.downloadStatus.active {
+    opacity: 0.6;
+}
+
+.downloadStatus span {
+    font-size: calc(var(--min-font) * 3);
+}
+
+/* .selected {
+    box-shadow: 
+        #38b6ff 0 0 calc(0.5px * var(--rate)) inset, #38b6ff 0 0 calc(0.5px * var(--rate)),
+        #38b6ff 0 0 calc(0.5px * var(--rate)) inset, #38b6ff 0 0 calc(0.5px * var(--rate)),
+        #38b6ff 0 0 calc(0.5px * var(--rate)) inset, #38b6ff 0 0 calc(0.5px * var(--rate)),
+} */
+
+
+
+/* タグレベルで共通の処理 */
+.card img {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.card p {
+    position: absolute;
+    display: block;
+    color: white;
+}
+
+
+
+/* 共通クラスごとの設定 */
+.vertical {
+    writing-mode: vertical-rl; 
+}
+.santen {
+    font-family: sans-serif;
+}
+
+.skill {
+    font-size: calc(var(--min-font) * 1.4);
+    background: #38b6ff;
+    width: fit-content;
+    padding: 0 calc(1px * var(--rate));
+    height: calc(3.5px * var(--rate));
+    line-height: calc(3.2px * var(--rate));
+    border-radius: calc(0.3px * var(--rate));
+
+    margin: calc(1px * var(--rate)) 0 calc(0.5px * var(--rate));
+    position: relative;
+}
+
+.skill.longSkill {
+    font-size: calc(var(--min-font) * 1.4 * 0.8);
+}
+
+.skill .before {
+    position: absolute;
+    right: calc(-4.5px * var(--rate));
+    top: calc(-0.45px * var(--rate));
+    height: calc(4.5px * var(--rate));
+    width: calc(4.5px * var(--rate));
+    display: block;
+    background-size: contain;
+}
+
+.skill.sho .before {
+    background-image: url(./images/default/mark/sho.png);
+}
+.skill.one .before {
+    background-image: url(./images/default/mark/1.png);
+}
+
+
+.card .skill {
+    display: flex;
+}
+
+.skill ruby {
+    transform: translateY(calc(var(--rate) * -1.25px )); /* 枠拡大前は 1.2 */
+}
+
+.skill.longSkill ruby {
+    transform: translateY(calc(var(--rate) * -1.25px * 0.5));
+}
+
+.skill rt {
+    font-size: calc(var(--min-ruby-font) * 1.4);
+    /* -webkit-text-stroke: calc(var(--min-ruby-text-stroke) * 1.4) black; */
+    --shadow-width: calc(var(--min-text-stroke) * var(--ruby-rate) * 1.4);
+    text-shadow: 0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black;
+}
+
+.skill.longSkill rt {
+    font-size: calc(var(--min-ruby-font) * 1.4 * 0.8);
+}
+
+
+.effect {
+    --shadow-width: var(--min-text-stroke);
+    font-size: calc(var(--min-font));
+    /* -webkit-text-stroke: calc(var(--min-text-stroke)) black; */
+    text-shadow: 0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black;
+}
+
+.effect.longEffect {
+    font-size: calc(var(--min-font) * 0.8);
+}
+
+.effect rt {
+    --shadow-width: calc(var(--min-text-stroke) * var(--ruby-rate));
+    font-size: calc(var(--min-ruby-font));
+    /* -webkit-text-stroke: calc(var(--min-ruby-text-stroke)) black; */
+    text-shadow: 0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black;
+}
+
+.effect.longEffect rt {
+    font-size: calc(var(--min-ruby-font) * 0.8);
+}
+
+
+
+/* 各ブロックの設定 */
+.name {
+    font-size: calc(var(--min-font) * 1.6);
+    left: calc(4.5px * var(--rate));
+    top: calc(14px * var(--rate));
+    /* width: calc(4px * var(--rate)); */
+    height: calc(38px * var(--rate));
+    text-align: center;
+    line-height: calc(4px * var(--rate));
+}
+
+.name.noRuby {
+    left: calc(4.9px * var(--rate)); /* 枠拡大前は 5.2 */
+}
+
+.name rt {
+    font-size: calc(var(--min-ruby-font) * 1.6);
+}
+
+.name.longName {
+    font-size: calc(var(--min-font) * 1.3);
+}
+
+.name.longName rt {
+    font-size: calc(var(--min-ruby-font) * 1.3);;
+}
+
+
+.card img.rankIMG {
+    left: calc(2px * var(--rate));
+    top: calc(2px * var(--rate));
+    width: calc(7px * var(--rate));
+    height: calc(7px * var(--rate));
+}
+
+.power {
+    font-size: calc(var(--min-font) * 2.8);
+    letter-spacing: calc(-0.2px * var(--rate));
+    right: calc(2px * var(--rate));
+    bottom: calc(1.5px * var(--rate)); /* 枠拡大前は枠が隠れていたのもあって 1.8 */
+    /* width: calc(11px * var(--rate));
+    height: calc(5px * var(--rate)); */
+}
+
+.powerMarkDiv {
+    right: calc(16px * var(--rate));
+    bottom: calc(1.3px * var(--rate)); /* 枠拡大前は枠が隠れていたのもあって 1.6 */
+    height: calc(8px * var(--rate));
+    width: calc(6px * var(--rate));
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+
+.powerMarkDiv img {
+    height: 100%;
+    position: relative;
+    object-fit: contain;
+    margin: 0 calc(-0.6px * var(--rate));
+}
+
+.skillBox {
+    left: calc(6px * var(--rate));
+    top: calc(56px * var(--rate));
+    width: calc(54px * var(--rate));
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(23px * var(--rate)); /* 枠拡大前は 25 */
+}
+
+.skillBox.has2Skill {
+    justify-content: space-around;
+}
+
+.skillBox p {
+    position: relative;
+}
+
+.type {
+    --shadow-width: calc(var(--min-text-stroke) * 1.6);
+    font-size: calc(var(--min-font) * 1.6);
+    /* -webkit-text-stroke: calc(var(--min-text-stroke) * 1.6) black; */
+    text-shadow: 0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black;
+    left: calc(26px * var(--rate));
+    width: calc(37px * var(--rate));
+    bottom: calc(35.5px * var(--rate));;
+    line-height: calc(3px * var(--rate));
+    text-align: center;
+}
+
+.type.longType {
+    left: auto;
+    right: calc(2px * var(--rate));
+    width: 100%;
+    text-align: end;
+    font-size: calc(var(--min-font) * 1.4);
+}
+
+.type rt{
+    --shadow-width: calc(var(--min-text-stroke) * var(--ruby-rate) * 1.6);
+    font-size: calc(var(--min-ruby-font) * 1.6);
+    /* -webkit-text-stroke: calc(var(--min-ruby-text-stroke) * 1.6) black; */
+    text-shadow: 0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black;
+}
+
+
+
+.column {
+    --shadow-width: calc(var(--min-text-stroke));
+    font-size: calc(var(--min-font));
+    /* -webkit-text-stroke: calc(var(--min-text-stroke)) black; */
+    text-shadow: 0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black,0 0 calc(var(--shadow-width)) black;
+    right: calc(5px * var(--rate));
+    top: calc(4px * var(--rate));
+    /* width: calc(4px * var(--rate)); */
+    height: calc(43.5px * var(--rate));  /* 枠拡大前は 45 */
+}
+
