@@ -24,12 +24,14 @@
 
 * {
     margin: 0;
-    color: black;
     font-family: NotoSansJP;
     font-weight: bold;
     box-sizing: border-box;
 }
 
+body {
+    color: black;
+}
 
 body > * {
     margin: 0 auto;
@@ -46,23 +48,34 @@ body > * {
 .controlRow {
     display: flex;
     justify-content: center;
+    margin: 10px 0;
+}
+
+.controlTitle {
+    width: 100px;
+    text-align: left;
+}
+
+.controlContent {
+    width: 300px;
+}
+
+.controlContent * {
+    width: 100%;
+    padding: 5px 10px;
 }
 
 
-#cards {
-    display: flex;
-    width: max-content;
-    margin: 50px;
-}
 
 .card {
-    width: calc(63px * var(--rate) * var(--expand-rate));
-    height: calc(88px * var(--rate) * var(--expand-rate));
+    width: calc(63px * var(--rate));
+    height: calc(88px * var(--rate));
     overflow: hidden;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 20px auto;
 }
 
 .cardContents {
@@ -70,6 +83,11 @@ body > * {
     height: calc(88px * var(--rate));
     position: relative;
     border: 1px solid white;
+    color: white;
+}
+
+.cardContents * {
+    text-align: start;
 }
 
 .downloadStatus {

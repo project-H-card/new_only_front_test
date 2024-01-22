@@ -1,8 +1,18 @@
 const cardContentsDiv = document.querySelector(".cardContents");
 const rankSelect = document.querySelector("#rankSelect");
+const markSelect = document.querySelector("#markSelect");
+const powerSelect = document.querySelector("#powerSelect");
+const typeSelect = document.querySelector("#typeSelect");
+const nameSelect = document.querySelector("#nameSelect");
+const columnSelect = document.querySelector("#columnSelect");
+const skill1Select = document.querySelector("#skill1Select");
+const effect1Select = document.querySelector("#effect1Select");
+const skill2Select = document.querySelector("#skill2Select");
+const effect2Select = document.querySelector("#effect2Select");
+
 
 rankSelect.addEventListener("change", () => {
-    let rank = rankSelect.value;
+    const rank = rankSelect.value;
     if(document.querySelector(".rankIMG")) {
         document.querySelector(".rankIMG").src = `./assets/images/default/rank${rank}.png`;
     } else {
@@ -10,6 +20,114 @@ rankSelect.addEventListener("change", () => {
     }
 });
 
+
+markSelect.addEventListener("change", () => {
+    const mark = markSelect.value;
+    let markHTML = `<img src="./assets/images/default/sword.png" alt="">`;
+
+    if(mark == "sword") {
+        markHTML = `<img src="./assets/images/default/sword.png" alt="">`;
+    } else if(mark == "shield") {
+        markHTML = `<img src="./assets/images/default/shield.png" alt="">`;
+    } else {
+        markHTML = `<img src="./assets/images/default/sword.png" alt="">
+        <img src="./assets/images/default/shield.png" alt="">`;
+    }
+
+    if(document.querySelector(".powerMarkDiv")) {
+        document.querySelector(".powerMarkDiv").innerHTML = markHTML;
+    } else {
+        cardContentsDiv.innerHTML += `<div class="powerMarkDiv">${markHTML}</div>`;
+    }
+});
+
+
+powerSelect.addEventListener("change", () => {
+    const power = powerSelect.value;
+
+    if(document.querySelector(".power")) {
+        document.querySelector(".power").innerHTML = power;
+    } else {
+        cardContentsDiv.innerHTML += `<p class="power">${power}</p>`;
+    }
+});
+
+
+typeSelect.addEventListener("change", () => {
+    const type = typeSelect.value;
+
+    if(document.querySelector(".type")) {
+        document.querySelector(".type").innerHTML = type;
+    } else {
+        cardContentsDiv.innerHTML += `<p class="type">${type}</p>`;
+    }
+});
+
+
+nameSelect.addEventListener("change", () => {
+    const name = nameSelect.value;
+
+    if(document.querySelector(".name")) {
+        document.querySelector(".name").innerHTML = name;
+    } else {
+        cardContentsDiv.innerHTML += `<p class="name">${name}</p>`;
+    }
+});
+
+
+columnSelect.addEventListener("change", () => {
+    const column = columnSelect.value;
+
+    if(document.querySelector(".column")) {
+        document.querySelector(".column").innerHTML = column;
+    } else {
+        cardContentsDiv.innerHTML += `<p class="column">${column}</p>`;
+    }
+});
+
+
+skill1Select.addEventListener("change", () => {
+    const skill1 = skill1Select.value;
+
+    if(document.querySelector(".skill1")) {
+        document.querySelector(".skill1").innerHTML = skill1;
+    } else {
+        cardContentsDiv.innerHTML += `<div class="skill1 skill">${skill1}</div>`;
+    }
+});
+
+
+effect1Select.addEventListener("change", () => {
+    const effect1 = effect1Select.value;
+
+    if(document.querySelector(".effect1")) {
+        document.querySelector(".effect1").innerHTML = effect1;
+    } else {
+        cardContentsDiv.innerHTML += `<p class="effect1 effect">${effect1}</p>`;
+    }
+});
+
+
+skill2Select.addEventListener("change", () => {
+    const skill2 = skill2Select.value;
+
+    if(document.querySelector(".skill2")) {
+        document.querySelector(".skill2").innerHTML = skill2;
+    } else {
+        cardContentsDiv.innerHTML += `<div class="skill2 skill">${skill2}</div>`;
+    }
+});
+
+
+effect2Select.addEventListener("change", () => {
+    const effect2 = effect2Select.value;
+
+    if(document.querySelector(".effect2")) {
+        document.querySelector(".effect2").innerHTML = effect2;
+    } else {
+        cardContentsDiv.innerHTML += `<p class="effect2 effect">${effect2}</p>`;
+    }
+});
 
 
 

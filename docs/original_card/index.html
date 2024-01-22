@@ -24,40 +24,62 @@
             </div>
         </div>
         <div class="controlRow">
-            <div class="controlTitle"></div>
-            <div class="controlContent"></div>
+            <div class="controlTitle">マーク</div>
+            <div class="controlContent">
+                <select name="markSelect" id="markSelect">
+                    <option value="sword">剣（アタッカー）</option>
+                    <option value="shield">盾（ブロッカー）</option>
+                    <option value="both">両方</option>
+                </select>
+            </div>
         </div>
         <div class="controlRow">
-            <div class="controlTitle"></div>
-            <div class="controlContent"></div>
+            <div class="controlTitle">パワー</div>
+            <div class="controlContent">
+                <input type="number" name="powerSelect" id="powerSelect" min="1000" max="9000" step="1" value="1000">
+            </div>
         </div>
         <div class="controlRow">
-            <div class="controlTitle"></div>
-            <div class="controlContent"></div>
+            <div class="controlTitle">属性</div>
+            <div class="controlContent">
+                <input type="text" name="typeSelect" id="typeSelect" value="現代のプレイヤー" placeholder="戦国時代の武士">
+            </div>
         </div>
         <div class="controlRow">
-            <div class="controlTitle"></div>
-            <div class="controlContent"></div>
+            <div class="controlTitle">名前</div>
+            <div class="controlContent">
+                <input type="text" name="nameSelect" id="nameSelect" placeholder="シュン" value="シュン">
+            </div>
         </div>
         <div class="controlRow">
-            <div class="controlTitle"></div>
-            <div class="controlContent"></div>
+            <div class="controlTitle">コラム</div>
+            <div class="controlContent">
+                <textarea name="columnSelect" id="columnSelect" cols="30" rows="3" placeholder="歴史って案外、おもろいじゃん。">歴史って案外、おもろいじゃん。</textarea>
+            </div>
         </div>
         <div class="controlRow">
-            <div class="controlTitle"></div>
-            <div class="controlContent"></div>
+            <div class="controlTitle">効果名1</div>
+            <div class="controlContent">
+                <input type="text" name="skill1Select" id="skill1Select" placeholder="普通のパンチ" value="普通のパンチ">
+            </div>
         </div>
         <div class="controlRow">
-            <div class="controlTitle"></div>
-            <div class="controlContent"></div>
+            <div class="controlTitle">効果内容1</div>
+            <div class="controlContent">
+                <textarea name="effect1Select" id="effect1Select" cols="30" rows="3" placeholder="相手の山札を攻撃する時、このカードのパワーを＋1000する。ブロックされた場合はこの効果は発動しない。">相手の山札を攻撃する時、このカードのパワーを＋1000する。ブロックされた場合はこの効果は発動しない。</textarea>
+            </div>
         </div>
         <div class="controlRow">
-            <div class="controlTitle"></div>
-            <div class="controlContent"></div>
+            <div class="controlTitle">効果名2</div>
+            <div class="controlContent">
+                <input type="text" name="skill2Select" id="skill2Select" placeholder="身代わり" value="身代わり">
+            </div>
         </div>
         <div class="controlRow">
-            <div class="controlTitle"></div>
-            <div class="controlContent"></div>
+            <div class="controlTitle">効果内容2</div>
+            <div class="controlContent">
+                <textarea name="effect2Select" id="effect2Select" cols="30" rows="3" placeholder="相手の攻撃時にこのカードを手札から墓地へおくることで、相手の攻撃するカード1枚のパワーを−3000する。">相手の攻撃時にこのカードを手札から墓地へおくることで、相手の攻撃するカード1枚のパワーを−3000する。</textarea>
+            </div>
         </div>
     </div>
 
@@ -65,6 +87,29 @@
         <div class="cardContents">
             <img src="./assets/images/default/default_bg.png" alt="歴史カードゲームHi!storyのデフォルトの背景">
             <img src="./assets/images/default/rank0.png" alt="" class="rankIMG">
+            <div class="powerMarkDiv">
+                <img src="./assets/images/default/sword.png" alt="">
+            </div>
+
+            <p class="name vertical noRuby">シュン</p>
+            <p class="power">1000</p>
+            <p class="type">現代のプレイヤー</p>
+            <p class="column stroke vertical">歴史って案外、おもろいじゃん。</p>
+
+            <div class="skillBox has2Skill">
+                <div class="skillEffect1">
+                    <div class="skill1 skill">普通のパンチ
+                        <div class="before"></div>
+                    </div>
+                    <p class="effect1 effect">相手の山札を攻撃する時、このカードのパワーを＋1000する。ブロックされた場合はこの効果は発動しない。</p>
+                </div>
+                <div class="skillEffect2">
+                    <div class="skill2 skill">身代わり
+                        <div class="before"></div>
+                    </div>
+                    <p class="effect2 effect">相手の攻撃時にこのカードを手札から墓地へおくることで、相手の攻撃するカード1枚のパワーを−3000する。</p>
+                </div>
+            </div>
         </div>
     </div>
 
