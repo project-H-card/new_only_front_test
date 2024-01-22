@@ -64,6 +64,16 @@
             </div>
         </div>
         <div class="controlRow">
+            <div class="controlTitle">マーク1</div>
+            <div class="controlContent">
+                <select name="mark1Select" id="mark1Select">
+                    <option value="none">なし</option>
+                    <option value="sho">召</option>
+                    <option value="one">1</option>
+                </select>
+            </div>
+        </div>
+        <div class="controlRow">
             <div class="controlTitle">効果内容1</div>
             <div class="controlContent">
                 <textarea name="effect1Select" id="effect1Select" cols="30" rows="3" placeholder="相手の山札を攻撃する時、このカードのパワーを＋1000する。ブロックされた場合はこの効果は発動しない。">相手の山札を攻撃する時、このカードのパワーを＋1000する。ブロックされた場合はこの効果は発動しない。</textarea>
@@ -73,6 +83,16 @@
             <div class="controlTitle">効果名2</div>
             <div class="controlContent">
                 <input type="text" name="skill2Select" id="skill2Select" placeholder="身代わり" value="身代わり">
+            </div>
+        </div>
+        <div class="controlRow">
+            <div class="controlTitle">マーク2</div>
+            <div class="controlContent">
+                <select name="mark2Select" id="mark2Select">
+                    <option value="none">なし</option>
+                    <option value="sho">召</option>
+                    <option value="one">1</option>
+                </select>
             </div>
         </div>
         <div class="controlRow">
@@ -113,7 +133,9 @@
         </div>
     </div>
 
+    <input type="button" value="ダウンロード" id="downloadBtn">
 
+    <script src="https://cdn.jsdelivr.net/npm/dom-to-image@2.6.0/dist/dom-to-image.min.js"></script>
     <script src="./original_card.js"></script>
 </body>
 </html>

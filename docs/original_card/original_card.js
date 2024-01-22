@@ -6,8 +6,10 @@ const typeSelect = document.querySelector("#typeSelect");
 const nameSelect = document.querySelector("#nameSelect");
 const columnSelect = document.querySelector("#columnSelect");
 const skill1Select = document.querySelector("#skill1Select");
+const mark1Select = document.querySelector("#mark1Select");
 const effect1Select = document.querySelector("#effect1Select");
 const skill2Select = document.querySelector("#skill2Select");
+const mark2Select = document.querySelector("#mark2Select");
 const effect2Select = document.querySelector("#effect2Select");
 
 
@@ -97,6 +99,15 @@ skill1Select.addEventListener("change", () => {
 });
 
 
+mark1Select.addEventListener("change", () => {
+    const mark1 = mark1Select.value;
+    document.querySelector(".skill1").classList.remove("sho", "one");
+    if(mark1 == "sho" || mark1 == "one") {
+        document.querySelector(".skill1").classList.add(mark1);
+    }
+});
+
+
 effect1Select.addEventListener("change", () => {
     const effect1 = effect1Select.value;
 
@@ -119,6 +130,15 @@ skill2Select.addEventListener("change", () => {
 });
 
 
+mark2Select.addEventListener("change", () => {
+    const mark2 = mark2Select.value;
+    document.querySelector(".skill1").classList.remove("sho", "one");
+    if(mark2 == "sho" || mark2 == "one") {
+        document.querySelector(".skill1").classList.add(mark2);
+    }
+});
+
+
 effect2Select.addEventListener("change", () => {
     const effect2 = effect2Select.value;
 
@@ -128,6 +148,27 @@ effect2Select.addEventListener("change", () => {
         cardContentsDiv.innerHTML += `<p class="effect2 effect">${effect2}</p>`;
     }
 });
+
+
+async function trySaveIMG(elem, path) {
+    try {
+        const dl = document.createElement("a");
+        dl.href = await domtoimage.toPng(elem, {
+            width: elem.clientWidth,
+            height: elem.clientHeight
+        });
+        dl.download = path;
+        dl.click();
+    } catch(e) {
+        console.log(`${path}のダウンロードに失敗。`);
+    }
+}
+
+
+document.querySelector("#downloadBtn").addEventListener("click", async (e) => {
+    const cardElement = document.querySelector(".cardContents");
+    trySaveIMG(cardElement, "ハイスト_オリジナルカード.png");
+})
 
 
 

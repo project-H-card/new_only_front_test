@@ -174,10 +174,10 @@ body > * {
 }
 
 .skill.sho .before {
-    background-image: url(./images/default/mark/sho.png);
+    background-image: url(./assets/images/default/mark/sho.png);
 }
 .skill.one .before {
-    background-image: url(./images/default/mark/1.png);
+    background-image: url(./assets/images/default/mark/1.png);
 }
 
 
@@ -349,4 +349,27 @@ body > * {
     /* width: calc(4px * var(--rate)); */
     height: calc(43.5px * var(--rate));  /* 枠拡大前は 45 */
 }
+
+
+
+#downloadBtn {
+    margin: 30px auto;
+    margin-bottom: 50px;
+    display: block;
+    padding: 10px 20px;
+    background: #38b6ff;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 1px solid #38b6ff;
+}
+
+
+#downloadBtn:hover {
+    background: white;
+    color: #38b6ff;
+}
+
+
 
