@@ -105,6 +105,9 @@ mark1Select.addEventListener("change", () => {
     if(mark1 == "sho" || mark1 == "one") {
         document.querySelector(".skill1").classList.add(mark1);
     }
+    if(!document.querySelector(".skill1 .before")) {
+        document.querySelector(".skill1").innerHTML += `<div class="before"></div>`;
+    }
 });
 
 
@@ -132,9 +135,12 @@ skill2Select.addEventListener("change", () => {
 
 mark2Select.addEventListener("change", () => {
     const mark2 = mark2Select.value;
-    document.querySelector(".skill1").classList.remove("sho", "one");
+    document.querySelector(".skill2").classList.remove("sho", "one");
     if(mark2 == "sho" || mark2 == "one") {
-        document.querySelector(".skill1").classList.add(mark2);
+        document.querySelector(".skill2").classList.add(mark2);
+    }
+    if(!document.querySelector(".skill2 .before")) {
+        document.querySelector(".skill2").innerHTML += `<div class="before"></div>`;
     }
 });
 
