@@ -12,6 +12,8 @@
     --min-ruby-text-stroke: calc(var(--min-ruby-font) * var(--text-storke-rate));
 
     --expand-rate: calc(90 / 63);
+
+    --sky-blue: #38b6ff;
 }
 
 
@@ -65,6 +67,24 @@ body > * {
     padding: 5px 10px;
 }
 
+#illustSelect {
+    cursor: pointer;
+    display: block;
+    padding: 10px 20px;
+    background: var(--sky-blue);
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 1px solid var(--sky-blue);
+}
+
+#illustSelect:hover {
+    background: white;
+    color: var(--sky-blue);
+}
+
+
 
 
 .card {
@@ -115,9 +135,9 @@ body > * {
 
 /* .selected {
     box-shadow: 
-        #38b6ff 0 0 calc(0.5px * var(--rate)) inset, #38b6ff 0 0 calc(0.5px * var(--rate)),
-        #38b6ff 0 0 calc(0.5px * var(--rate)) inset, #38b6ff 0 0 calc(0.5px * var(--rate)),
-        #38b6ff 0 0 calc(0.5px * var(--rate)) inset, #38b6ff 0 0 calc(0.5px * var(--rate)),
+        var(--sky-blue) 0 0 calc(0.5px * var(--rate)) inset, var(--sky-blue) 0 0 calc(0.5px * var(--rate)),
+        var(--sky-blue) 0 0 calc(0.5px * var(--rate)) inset, var(--sky-blue) 0 0 calc(0.5px * var(--rate)),
+        var(--sky-blue) 0 0 calc(0.5px * var(--rate)) inset, var(--sky-blue) 0 0 calc(0.5px * var(--rate)),
 } */
 
 
@@ -148,7 +168,7 @@ body > * {
 
 .skill {
     font-size: calc(var(--min-font) * 1.4);
-    background: #38b6ff;
+    background: var(--sky-blue);
     width: fit-content;
     padding: 0 calc(1px * var(--rate));
     height: calc(3.5px * var(--rate));
@@ -357,19 +377,105 @@ body > * {
     margin-bottom: 50px;
     display: block;
     padding: 10px 20px;
-    background: #38b6ff;
+    background: var(--sky-blue);
     color: white;
     border-radius: 10px;
     font-size: 20px;
     cursor: pointer;
-    border: 1px solid #38b6ff;
+    border: 1px solid var(--sky-blue);
 }
 
 
 #downloadBtn:hover {
     background: white;
-    color: #38b6ff;
+    color: var(--sky-blue);
 }
 
 
+#illustSelectArea {
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#illustSelectArea.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+#illustSelectCard {
+    margin: auto;
+    position: relative;
+    width: 90%;
+    height: 90%;
+    background: white;
+    border-radius: 20px;
+}
+
+#illustSelectCardHeader {
+    position: relative;
+}
+
+#illustSelectCardHeader h2 {
+    margin: 20px auto;
+}
+
+#closeIllustSelectCard {
+    position: relative;
+    margin-left: auto;
+    margin-right: 10px;
+    margin-top: -50px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#closeIllustSelectCard span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 80%;
+    background: black;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    top: 12px;
+    left: 1px;
+}
+#closeIllustSelectCard span:nth-child(1) {
+    transform: rotate(45deg);
+}
+#closeIllustSelectCard span:nth-child(2) {
+    transform: rotate(135deg);
+}
+
+#IllustSelectCardMain {
+    width: 100%;
+    height: calc(100% - 40px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: scroll;
+}
+
+.illustOption {
+    display: block;
+    width: 80%;
+    height: 80%;
+    margin: auto 20px;
+    cursor: pointer;
+}
+
+.illustOption img {
+    height: 100%;
+    width: auto;
+}
+
+.illustOption:hover {
+    opacity: 0.6;
+}
 

@@ -42,7 +42,7 @@
         <div class="controlRow">
             <div class="controlTitle">属性</div>
             <div class="controlContent">
-                <input type="text" name="typeSelect" id="typeSelect" value="現代のプレイヤー" placeholder="戦国時代の武士">
+                <input type="text" name="typeSelect" id="typeSelect" value="{現代[げんだい]}のプレイヤー" placeholder="{戦国時代[せんごくじだい]}の{武士[ぶし]}">
             </div>
         </div>
         <div class="controlRow">
@@ -60,7 +60,7 @@
         <div class="controlRow">
             <div class="controlTitle">効果名1</div>
             <div class="controlContent">
-                <input type="text" name="skill1Select" id="skill1Select" placeholder="普通のパンチ" value="普通のパンチ">
+                <input type="text" name="skill1Select" id="skill1Select" placeholder="{普通[ふつう]}のパンチ" value="{普通[ふつう]}のパンチ">
             </div>
         </div>
         <div class="controlRow">
@@ -76,13 +76,13 @@
         <div class="controlRow">
             <div class="controlTitle">効果内容1</div>
             <div class="controlContent">
-                <textarea name="effect1Select" id="effect1Select" cols="30" rows="3" placeholder="相手の山札を攻撃する時、このカードのパワーを＋1000する。ブロックされた場合はこの効果は発動しない。">相手の山札を攻撃する時、このカードのパワーを＋1000する。ブロックされた場合はこの効果は発動しない。</textarea>
+                <textarea name="effect1Select" id="effect1Select" cols="30" rows="3" placeholder="{相手[あいて]}の{山札[やまふだ]}を{攻撃[こうげき]}する{時[とき]}、このカードのパワーを＋1000する。ブロックされた{場合[ばあい]}はこの{効果[こうか]}は{発動[はつどう]}しない。">{相手[あいて]}の{山札[やまふだ]}を{攻撃[こうげき]}する{時[とき]}、このカードのパワーを＋1000する。ブロックされた{場合[ばあい]}はこの{効果[こうか]}は{発動[はつどう]}しない。</textarea>
             </div>
         </div>
         <div class="controlRow">
             <div class="controlTitle">効果名2</div>
             <div class="controlContent">
-                <input type="text" name="skill2Select" id="skill2Select" placeholder="身代わり" value="身代わり">
+                <input type="text" name="skill2Select" id="skill2Select" placeholder="{身代[みが]}わり" value="{身代[みが]}わり">
             </div>
         </div>
         <div class="controlRow">
@@ -98,14 +98,21 @@
         <div class="controlRow">
             <div class="controlTitle">効果内容2</div>
             <div class="controlContent">
-                <textarea name="effect2Select" id="effect2Select" cols="30" rows="3" placeholder="相手の攻撃時にこのカードを手札から墓地へおくることで、相手の攻撃するカード1枚のパワーを−3000する。">相手の攻撃時にこのカードを手札から墓地へおくることで、相手の攻撃するカード1枚のパワーを−3000する。</textarea>
+                <textarea name="effect2Select" id="effect2Select" cols="30" rows="3" placeholder="{相手[あいて]}の{攻撃時[こうげきじ]}にこのカードを{手札[てふだ]}から{墓地[ぼち]}へおくることで、{相手[あいて]}の{攻撃[こうげき]}するカード1{枚[まい]}のパワーを−3000する。">{相手[あいて]}の{攻撃時[こうげきじ]}にこのカードを{手札[てふだ]}から{墓地[ぼち]}へおくることで、{相手[あいて]}の{攻撃[こうげき]}するカード1{枚[まい]}のパワーを−3000する。</textarea>
+            </div>
+        </div>
+        <div class="controlRow">
+            <div class="controlTitle">イラスト</div>
+            <div class="controlContent">
+                <input type="button" value="イラストを選択" id="illustSelect">
             </div>
         </div>
     </div>
 
     <div id="card" class="card">
         <div class="cardContents">
-            <img src="./assets/images/default/default_bg.png" alt="歴史カードゲームHi!storyのデフォルトの背景">
+            <img src="./assets/images/character/shun_dj-muse.png" alt="オリジナルカードのイラスト" id="illust">
+            <img src="./assets/images/default/default_bg_transparent.png" alt="歴史カードゲームHi!storyのデフォルトの背景">
             <img src="./assets/images/default/rank0.png" alt="" class="rankIMG">
             <div class="powerMarkDiv">
                 <img src="./assets/images/default/sword.png" alt="">
@@ -134,6 +141,32 @@
     </div>
 
     <input type="button" value="ダウンロード" id="downloadBtn">
+
+    <div id="illustSelectArea">
+        <div id="illustSelectCard">
+            <div id="illustSelectCardHeader">
+                <h2>イラストを選択</h2>
+                <div id="closeIllustSelectCard">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="IllustSelectCardMain">
+                <div class="illustOption">
+                    <img src="./assets/images/character/shun_dj-muse.png" alt="シュン（戦国）" class="">
+                    <span>シュン（戦国）</span>
+                </div>
+                <div class="illustOption">
+                    <img src="./assets/images/character/hamabou_dj-muse.png" alt="ハマボウ（戦国）" class="">
+                    <span>ハマボウ（戦国）</span>
+                </div>
+                <div class="illustOption">
+                    <img src="./assets/images/character/shiorin_dj-muse.png" alt="シオリン（戦国）" class="">
+                    <span>シオリン（戦国）</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/dom-to-image@2.6.0/dist/dom-to-image.min.js"></script>
     <script src="./original_card.js"></script>

@@ -13,17 +13,20 @@ const mark2Select = document.querySelector("#mark2Select");
 const effect2Select = document.querySelector("#effect2Select");
 
 
-rankSelect.addEventListener("change", () => {
+function addRuby(text) {
+    return text.replace(/{/g, `<ruby>`).replace(/}/g, `</ruby>`).replace(/\[/g, `<rt>`).replace(/\]/g, `</rt>`);
+}
+
+function changeRank() {
     const rank = rankSelect.value;
     if(document.querySelector(".rankIMG")) {
         document.querySelector(".rankIMG").src = `./assets/images/default/rank${rank}.png`;
     } else {
         cardContentsDiv.innerHTML += `<img src="./assets/images/default/rank${rank}.png" alt="" class="rankIMG">`;
     }
-});
+}
 
-
-markSelect.addEventListener("change", () => {
+function changeMark() {
     const mark = markSelect.value;
     let markHTML = `<img src="./assets/images/default/sword.png" alt="">`;
 
@@ -41,10 +44,9 @@ markSelect.addEventListener("change", () => {
     } else {
         cardContentsDiv.innerHTML += `<div class="powerMarkDiv">${markHTML}</div>`;
     }
-});
+}
 
-
-powerSelect.addEventListener("change", () => {
+function changePower() {
     const power = powerSelect.value;
 
     if(document.querySelector(".power")) {
@@ -52,32 +54,31 @@ powerSelect.addEventListener("change", () => {
     } else {
         cardContentsDiv.innerHTML += `<p class="power">${power}</p>`;
     }
-});
+}
 
-
-typeSelect.addEventListener("change", () => {
+function changeType() {
     const type = typeSelect.value;
+    const typeWithRuby = addRuby(type);
 
     if(document.querySelector(".type")) {
-        document.querySelector(".type").innerHTML = type;
+        document.querySelector(".type").innerHTML = typeWithRuby;
     } else {
-        cardContentsDiv.innerHTML += `<p class="type">${type}</p>`;
+        cardContentsDiv.innerHTML += `<p class="type">${typeWithRuby}</p>`;
     }
-});
+}
 
-
-nameSelect.addEventListener("change", () => {
+function changeName() {
     const name = nameSelect.value;
+    const nameWithRuby = addRuby(name);
 
     if(document.querySelector(".name")) {
-        document.querySelector(".name").innerHTML = name;
+        document.querySelector(".name").innerHTML = nameWithRuby;
     } else {
-        cardContentsDiv.innerHTML += `<p class="name">${name}</p>`;
+        cardContentsDiv.innerHTML += `<p class="name">${nameWithRuby}</p>`;
     }
-});
+}
 
-
-columnSelect.addEventListener("change", () => {
+function changeColumn() {
     const column = columnSelect.value;
 
     if(document.querySelector(".column")) {
@@ -85,21 +86,20 @@ columnSelect.addEventListener("change", () => {
     } else {
         cardContentsDiv.innerHTML += `<p class="column">${column}</p>`;
     }
-});
+}
 
-
-skill1Select.addEventListener("change", () => {
+function changeSkill1() {
     const skill1 = skill1Select.value;
+    const skill1WithRuby = addRuby(skill1);
 
     if(document.querySelector(".skill1")) {
-        document.querySelector(".skill1").innerHTML = skill1;
+        document.querySelector(".skill1").innerHTML = skill1WithRuby;
     } else {
-        cardContentsDiv.innerHTML += `<div class="skill1 skill">${skill1}</div>`;
+        cardContentsDiv.innerHTML += `<div class="skill1 skill">${skill1WithRuby}</div>`;
     }
-});
+}
 
-
-mark1Select.addEventListener("change", () => {
+function changeMark1() {
     const mark1 = mark1Select.value;
     document.querySelector(".skill1").classList.remove("sho", "one");
     if(mark1 == "sho" || mark1 == "one") {
@@ -108,32 +108,31 @@ mark1Select.addEventListener("change", () => {
     if(!document.querySelector(".skill1 .before")) {
         document.querySelector(".skill1").innerHTML += `<div class="before"></div>`;
     }
-});
+}
 
-
-effect1Select.addEventListener("change", () => {
+function changeEffect1() {
     const effect1 = effect1Select.value;
+    const effect1WithRuby = addRuby(effect1);
 
     if(document.querySelector(".effect1")) {
-        document.querySelector(".effect1").innerHTML = effect1;
+        document.querySelector(".effect1").innerHTML = effect1WithRuby;
     } else {
-        cardContentsDiv.innerHTML += `<p class="effect1 effect">${effect1}</p>`;
+        cardContentsDiv.innerHTML += `<p class="effect1 effect">${effect1WithRuby}</p>`;
     }
-});
+}
 
-
-skill2Select.addEventListener("change", () => {
+function changeSkill2() {
     const skill2 = skill2Select.value;
+    const skill2WithRuby = addRuby(skill2);
 
     if(document.querySelector(".skill2")) {
-        document.querySelector(".skill2").innerHTML = skill2;
+        document.querySelector(".skill2").innerHTML = skill2WithRuby;
     } else {
-        cardContentsDiv.innerHTML += `<div class="skill2 skill">${skill2}</div>`;
+        cardContentsDiv.innerHTML += `<div class="skill2 skill">${skill2WithRuby}</div>`;
     }
-});
+}
 
-
-mark2Select.addEventListener("change", () => {
+function changeMark2() {
     const mark2 = mark2Select.value;
     document.querySelector(".skill2").classList.remove("sho", "one");
     if(mark2 == "sho" || mark2 == "one") {
@@ -142,18 +141,32 @@ mark2Select.addEventListener("change", () => {
     if(!document.querySelector(".skill2 .before")) {
         document.querySelector(".skill2").innerHTML += `<div class="before"></div>`;
     }
-});
+}
 
-
-effect2Select.addEventListener("change", () => {
+function changeEffect2() {
     const effect2 = effect2Select.value;
+    const effect2WithRuby = addRuby(effect2);
 
     if(document.querySelector(".effect2")) {
-        document.querySelector(".effect2").innerHTML = effect2;
+        document.querySelector(".effect2").innerHTML = effect2WithRuby;
     } else {
-        cardContentsDiv.innerHTML += `<p class="effect2 effect">${effect2}</p>`;
+        cardContentsDiv.innerHTML += `<p class="effect2 effect">${effect2WithRuby}</p>`;
     }
-});
+}
+
+
+rankSelect.addEventListener("change", changeRank);
+markSelect.addEventListener("change", changeMark);
+powerSelect.addEventListener("change", changePower);
+typeSelect.addEventListener("change", changeType);
+nameSelect.addEventListener("change", changeName);
+columnSelect.addEventListener("change", changeColumn);
+skill1Select.addEventListener("change", changeSkill1);
+mark1Select.addEventListener("change", changeMark1);
+effect1Select.addEventListener("change", changeEffect1);
+skill2Select.addEventListener("change", changeSkill2);
+mark2Select.addEventListener("change", changeMark2);
+effect2Select.addEventListener("change", changeEffect2);
 
 
 async function trySaveIMG(elem, path) {
@@ -176,6 +189,35 @@ document.querySelector("#downloadBtn").addEventListener("click", async (e) => {
     trySaveIMG(cardElement, "ハイスト_オリジナルカード.png");
 })
 
+
+
+changeType();
+changeName();
+changeSkill1();
+changeEffect1();
+changeSkill2();
+changeEffect2();
+
+
+function closeIllustSelectCard() {
+    document.querySelector("#illustSelectArea").classList.remove("active");
+}
+
+document.querySelector("#illustSelect").addEventListener("click", (e) => {
+    document.querySelector("#illustSelectArea").classList.add("active");
+});
+
+document.querySelector("#closeIllustSelectCard").addEventListener("click", (e) => {
+    closeIllustSelectCard();
+});
+
+document.querySelectorAll(".illustOption").forEach((elem) => {
+    elem.addEventListener("click", (e) => {
+        const imgSrc = elem.querySelector("img").src;
+        document.querySelector("#illust").src = imgSrc;
+        closeIllustSelectCard();
+    });
+});
 
 
 // let cardContents = `
