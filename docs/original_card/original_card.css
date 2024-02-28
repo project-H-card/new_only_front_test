@@ -14,6 +14,7 @@
     --expand-rate: calc(90 / 63);
 
     --sky-blue: #38b6ff;
+    --orange: #ffa620;
 }
 
 
@@ -479,3 +480,23 @@ body > * {
     opacity: 0.6;
 }
 
+#illustUpload {
+    display: none;
+}
+
+#illustUploadLabel {
+    display: block;
+    padding: 10px 20px;
+    background: var(--orange);
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 1px solid var(--orange);
+    margin: 10px 0;
+}
+
+#illustUploadLabel:hover {
+    background: white;
+    color: var(--orange);
+}

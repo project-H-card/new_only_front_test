@@ -219,6 +219,15 @@ document.querySelectorAll(".illustOption").forEach((elem) => {
     });
 });
 
+document.getElementById('illustUpload').addEventListener('change', function(event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        document.querySelector("#illust").src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+});
+
 
 // let cardContents = `
 // <div class="cardContents">
