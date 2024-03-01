@@ -15,6 +15,7 @@
             <div id="questionCountSelectBlock">
                 <label for="questionCountSelect">問題数を選択:</label>
                 <select id="questionCountSelect">
+                    <option value="1">1問</option>
                     <option value="5">5問</option>
                     <option value="10">10問</option>
                     <option value="15">15問</option>
@@ -25,7 +26,16 @@
         
         <div id="quizContainer" class="screen" style="display: none;">
             <p id="currentQuiz"></p>
-            <h2 id="question"></h2>
+            <div id="qExplain">
+                <img src="./assets/images/Q.png" alt="Q">
+                <p>このコラムの人物は誰でしょう！？</p>
+            </div>
+            <h2 id="questionArea">
+                <img id="questionFrame" src="./assets/images/frame.png" alt="クイズの枠">
+                <span id="question"></span>
+                <img class="circleX" id="correctCircle" src="./assets/images/correct.png" alt="正解" style="display: none;">
+                <img class="circleX" id="wrongX" src="./assets/images/wrong.png" alt="不正解" style="display: none;">
+            </h2>
             <div id="choices"></div>
             <p id="eachQResult"></p>
         </div>

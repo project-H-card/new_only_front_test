@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: "tamanegi kaisho";
+    src: url("./assets/fonts/tamanegi_kaisho_free_kai.ttf");
+}
+
+@font-face {
+    font-family: "kaisei decol";
+    src: url("./assets/fonts/KaiseiDecol-Bold.ttf");
+}
+
+
 :root {
     --sky-blue: #87CEEB;
     --green: #3CB371;
@@ -85,10 +96,59 @@ h1, h2 {
 
 
 /* クイズシーンのスタイル */
+#questionArea {
+    position: relative;
+    aspect-ratio: 7/5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#questionFrame {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: absolute;
+}
+
+#question {
+    display: block;
+    margin: auto;
+    width: 80%;
+    font-family: "kaisei decol";
+}
+
+.circleX {
+    position: absolute;
+    height: 80%;
+    display: block;
+    margin: auto;
+}
+
+#qExplain {
+    margin: 20px auto;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+#qExplain img {
+    display: block;
+    margin: 0 10px;
+    height: 100%;
+    width: auto;
+}
+
+#qExplain p {
+    line-height: 40px;
+}
+
+
 #choices {
     display: flex;
     flex-wrap: wrap;
     margin: 30px auto;
+    justify-content: center;
 }
 
 .choice {
@@ -99,6 +159,10 @@ h1, h2 {
 .choice:hover {
     background-color: white;
     color: var(--orange);
+}
+
+#eachQResult {
+    text-align: center;
 }
 
 
