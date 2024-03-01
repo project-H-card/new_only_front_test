@@ -7,10 +7,39 @@
     <link rel="stylesheet" href="./column_quiz.css">
 </head>
 <body>
-    <h2>次のキーワードに関連する人物を選んでください：</h2>
-    <p id="question"></p>
-    <div id="choices"></div>
-    <p id="result"></p>
+    <h1>ハイスト　コラムクイズ</h1>
+
+    <div id="screens">
+        <div id="startScreen" class="screen">
+            <h2>問題数を選択してゲーム開始だ！</h2>
+            <div id="questionCountSelectBlock">
+                <label for="questionCountSelect">問題数を選択:</label>
+                <select id="questionCountSelect">
+                    <option value="5">5問</option>
+                    <option value="10">10問</option>
+                    <option value="15">15問</option>
+                </select>
+            </div>
+            <button id="startButton" class="blueButton button">スタート</button>
+        </div>
+        
+        <div id="quizContainer" class="screen" style="display: none;">
+            <p id="currentQuiz"></p>
+            <h2 id="question"></h2>
+            <div id="choices"></div>
+            <p id="eachQResult"></p>
+        </div>
+        
+        <div id="resultScreen" class="screen" style="display: none;">
+            <p id="result"></p>
+
+            <div id="resultButtons">
+                <button id="restartButton" class="blueButton button">もう一度</button>
+                <button id="backToTitleButton" class="greenButton button">タイトルに戻る</button>
+            </div>
+        </div>
+    </div>
+
     <script src="./column_quiz.js"></script>
 </body>
 </html>

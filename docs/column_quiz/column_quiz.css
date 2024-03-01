@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --sky-blue: #87CEEB;
+    --green: #3CB371;
+    --orange: #FFA500;
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 20px auto;
+}
+
+#screens {
+    margin: 20px auto;
+    max-width: 700px;
+    width: 100%;
+}
+
+/* ボタンのスタイル */
+.button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    font-size: 1rem;
+    width: 200px;
+}
+
+.blueButton {
+    background-color: var(--sky-blue);
+    color: white;
+    border: 1px solid var(--sky-blue);
+}
+
+.blueButton:hover {
+    background-color: white;
+    color: var(--sky-blue);
+}
+
+.greenButton {
+    background-color: var(--green);
+    color: white;
+    border: 1px solid var(--green);
+}
+
+.greenButton:hover {
+    background-color: white;
+    color: var(--green);
+}
+
+#startButton {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.orangeButton {
+    background-color: var(--orange);
+    color: white;
+    border: 1px solid var(--orange);
+}
+
+.orangeButton:hover {
+    background-color: white;
+    color: var(--orange);
+}
+
+
+/* スタートシーンのスタイル */
+#questionCountSelectBlock {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#questionCountSelect {
+    padding: 2px 10px;
+    font-size: 1rem;
+    border-radius: 3px;
+}
+
+
+
+/* クイズシーンのスタイル */
+#choices {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px auto;
+}
+
+.choice {
+    margin: 5px;
+    width: 200px;
+}
+
+.choice:hover {
+    background-color: white;
+    color: var(--orange);
+}
+
+
+
+/* リザルトシーンのスタイル */
+#resultButtons {
+    display: flex;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+#resultButtons .button {
+    margin: 0 10px;
+}
+
