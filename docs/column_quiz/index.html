@@ -12,16 +12,19 @@
     <div id="screens">
         <div id="startScreen" class="screen">
             <h2>問題数を選択してゲーム開始だ！</h2>
-            <div id="questionCountSelectBlock">
-                <label for="questionCountSelect">問題数を選択:</label>
-                <select id="questionCountSelect">
-                    <option value="1">1問</option>
-                    <option value="5">5問</option>
-                    <option value="10">10問</option>
-                    <option value="15">15問</option>
-                </select>
+            <div id="settings">
+                <div id="questionCountSelectBlock">
+                    <label for="questionCountSelect">問題数を選択:</label>
+                    <select id="questionCountSelect">
+                        <option value="5">5問</option>
+                        <option value="10">10問</option>
+                        <option value="15">15問</option>
+                    </select>
+                </div>
             </div>
             <button id="startButton" class="blueButton button">スタート</button>
+            <button id="muteStartButton" class="blueButton button">ミュートでスタート</button>
+
         </div>
         
         <div id="quizContainer" class="screen" style="display: none;">
@@ -41,11 +44,22 @@
         </div>
         
         <div id="resultScreen" class="screen" style="display: none;">
-            <p id="result"></p>
+            <div id="resultArea">
+                <h2 id="result"></h2>
+                <img class="resultImg" id="greatJob" src="./assets/images/greatJob.png" alt="大変よくできました">
+                <img class="resultImg" id="goodJob" src="./assets/images/goodJob.png" alt="よくできました">
+                <img class="resultImg" id="keepPracticing" src="./assets/images/keepPracticing.png" alt="もう少し頑張りましょう">
+            </div>
 
             <div id="resultButtons">
                 <button id="restartButton" class="blueButton button">もう一度</button>
                 <button id="backToTitleButton" class="greenButton button">タイトルに戻る</button>
+            </div>
+
+            <div id="shareAreas">
+                <h3>\結果をSNSでシェア/</h3>
+                <a class="shareButton" id="twitterShare" href="">X（旧Twitter）でシェア</a>
+                <a class="shareButton" id="lineShare" href="">LINEでシェア</a>
             </div>
         </div>
     </div>

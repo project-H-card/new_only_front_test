@@ -45,22 +45,51 @@ class Quiz {
         this.correctCircleElement = document.getElementById('correctCircle');
         this.wrongXElement = document.getElementById('wrongX'); 
 
+        this.greatJobElement = document.getElementById('greatJob');
+        this.goodJobElement = document.getElementById('goodJob');
+        this.keepPracticingElement = document.getElementById('keepPracticing');
+
+        this.twitterShareButton = document.getElementById('twitterShare');
+        this.lineShareButton = document.getElementById('lineShare');
+
         this.music = {
             thinking: new Audio('assets/audio/thinking.mp3'),
             correct: new Audio('assets/audio/correct.mp3'),
             wrong: new Audio('assets/audio/wrong.mp3'),
             question: new Audio('assets/audio/question.mp3'),
+            success: new Audio('assets/audio/success.mp3'),
+            tettere: new Audio('assets/audio/tettere.mp3'),
+            failed: new Audio('assets/audio/failed.mp3'),
         }
         this.init();
     }
 
     init() {
-        document.getElementById('startButton').addEventListener('click', () => this.startQuiz());
+        document.getElementById('startButton').addEventListener('click', () => this.startQuiz("unmute"));
+        document.getElementById('muteStartButton').addEventListener('click', () => this.startQuiz("mute"));
         document.getElementById('restartButton').addEventListener('click', () => this.restartQuiz());
         document.getElementById('backToTitleButton').addEventListener('click', () => this.backToTitle());
     }
 
-    startQuiz() {
+    mute() {
+        Object.values(this.music).forEach(music => {
+            music.muted = true;
+        });
+    }
+
+    unmute() {
+        Object.values(this.music).forEach(music => {
+            music.muted = false;
+        });
+    }
+
+    startQuiz(mute) {
+        if(mute == "mute") {
+            this.mute();
+        } else if(mute=="unmute") {
+            this.unmute();
+        }
+
         this.currentQuiz = 0;
         this.correctAnswers = 0;
         this.questionCount = parseInt(this.questionCountSelect.value, 10); // 選択された問題数を取得
@@ -140,7 +169,37 @@ class Quiz {
     }
 
     showResults() {
-        this.resultElement.textContent = `正解数: ${this.correctAnswers} / ${this.questionCount}`;
+        this.resultElement.textContent = `${this.questionCount} 問中 ${this.correctAnswers} 問正解！`;
+        const correctRate = this.correctAnswers / this.questionCount;
+
+        // シェアボタンのリンクを作成
+        const shareText = `「ハイストコラムクイズ」にチャレンジ！私は${this.questionCount}問中${this.correctAnswers}問正解しました！`;
+        const twitterShareUrl = encodeURIComponent(window.location.href+"?from=twitterShareButton");
+        const lineShareUrl = encodeURIComponent(window.location.href+"?from=lineShareButton");
+        const twitterUrl = `https://twitter.com/share?text=${shareText}&url=${twitterShareUrl}&hashtags=クイズ,ハイスト,歴史&related=projecthcard`;
+        const lineUrl = `https://line.me/R/msg/text/?${shareText}${encodeURIComponent("\n"+lineShareUrl)}`;
+
+        this.twitterShareButton.href = twitterUrl;
+        this.lineShareButton.href = lineUrl;
+
+        // 正解率を元に画像を変更し、効果音を鳴らす。
+        this.greatJobElement.style.display = 'none';
+        this.goodJobElement.style.display = 'none';
+        this.keepPracticingElement.style.display = 'none';
+        if(correctRate >= 0.99) {
+            this.greatJobElement.style.display = 'block';
+            this.music.success.currentTime = 0;
+            this.music.success.play();
+        } else if(correctRate >= 0.8) {
+            this.goodJobElement.style.display = 'block';
+            this.music.tettere.currentTime = 0;
+            this.music.tettere.play();
+        } else {
+            this.keepPracticingElement.style.display = 'block';
+            this.music.failed.currentTime = 0;
+            this.music.failed.play();
+        }
+
         this.changeScreen('result');
     }
 
@@ -168,6 +227,7 @@ class Quiz {
                 this.music.thinking.play();
                 break;
             case 'result':
+                this.music.thinking.pause();
                 this.resultScreen.style.display = 'block';
                 break;
         }
