@@ -69,14 +69,17 @@ class Quiz {
         // console.log(quizCSV);
         this.quizData = Papa.parse(quizCSV, { skipEmptyLines: true })
             .data.slice(1).map(row => {
-                return { name: row[0], column: row[1]}
+                return { name: row[0], column: row[1].split("\n").join("<br>")}
             });
-
 
         document.getElementById('startButton').addEventListener('click', () => this.startQuiz("unmute"));
         document.getElementById('muteStartButton').addEventListener('click', () => this.startQuiz("mute"));
         document.getElementById('restartButton').addEventListener('click', () => this.restartQuiz());
         document.getElementById('backToTitleButton').addEventListener('click', () => this.backToTitle());
+
+        Object.values(this.music).forEach(music => {
+            music.volume = 0.1;
+        });
     }
 
     mute() {
