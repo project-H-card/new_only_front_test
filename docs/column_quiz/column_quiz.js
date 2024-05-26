@@ -1,5 +1,5 @@
 // クイズデータの配列
-const quizData = [
+let defaultQuizData = [
     { name: "織田信長", column: "攻撃を一点に集約せよ、無駄な事はするな。" },
     { name: "真田信繁", column: "真田日本一の兵。古よりの物語にもこれなき由。" },
     { name: "豊臣秀吉", column: "負けると思えば負ける、勝つと思えば勝つ。逆になろうと、人には勝つと言い聞かすべし。" },
@@ -64,7 +64,15 @@ class Quiz {
         this.init();
     }
 
-    init() {
+    async init() {
+        const quizCSV = await (await fetch("./quiz_data.csv")).text();
+        // console.log(quizCSV);
+        this.quizData = Papa.parse(quizCSV, { skipEmptyLines: true })
+            .data.slice(1).map(row => {
+                return { name: row[0], column: row[1]}
+            });
+
+
         document.getElementById('startButton').addEventListener('click', () => this.startQuiz("unmute"));
         document.getElementById('muteStartButton').addEventListener('click', () => this.startQuiz("mute"));
         document.getElementById('restartButton').addEventListener('click', () => this.restartQuiz());
@@ -235,6 +243,6 @@ class Quiz {
 }
 
 
-const quiz = new Quiz(quizData);
+const quiz = new Quiz(defaultQuizData);
 
 

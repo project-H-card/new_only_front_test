@@ -19,12 +19,20 @@
                         <option value="5">5問</option>
                         <option value="10">10問</option>
                         <option value="15">15問</option>
+                        <option value="20">20問</option>
+                        <option value="25">25問</option>
+                        <option value="30">30問</option>
                     </select>
                 </div>
             </div>
             <button id="startButton" class="blueButton button">スタート</button>
             <button id="muteStartButton" class="blueButton button">ミュートでスタート</button>
 
+            <div id="shareAreas">
+                <h3>\結果をSNSでシェア/</h3>
+                <a class="shareButton" id="twitterShareTop" href="https://twitter.com/share?text=「ハイストコラムクイズ」にチャレンジ！&url=https://project-h-card.github.io/new_only_front_test/column_quiz/?from=twitterShare&hashtags=クイズ,ハイスト,歴史&related=projecthcard">X（旧Twitter）でシェア</a>
+                <a class="shareButton" id="lineShareTop" href="">LINEでシェア</a>
+            </div>
         </div>
         
         <div id="quizContainer" class="screen" style="display: none;">
@@ -64,6 +72,7 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="./column_quiz.js"></script>
 </body>
 </html>
