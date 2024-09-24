@@ -1,0 +1,125 @@
+/* 全体のフォントとレイアウト */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* タイトル（ターゲットナンバー）の装飾 */
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 方程式の表示エリア */
+#equation {
+    font-size: 1.5rem;
+    color: #555;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 素数ボタンのレイアウト */
+#prime-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#prime-buttons button {
+    font-size: 1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 52px;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#prime-buttons button:hover {
+    background-color: #0056b3;
+}
+
+/* 操作ボタン（素数、＝、リセット）のデザイン */
+button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#prime-button {
+    background-color: #17a2b8;
+}
+
+#prime-button:hover {
+    background-color: #117a8b;
+}
+
+#equals-button {
+    background-color: #ffc107;
+}
+
+#equals-button:hover {
+    background-color: #e0a800;
+}
+
+#reset-game {
+    background-color: #dc3545;
+}
+
+#reset-game:hover {
+    background-color: #c82333;
+}
+
+#retire-button {
+    background-color: #6c757d;
+}
+#retire-button:hover {
+    background-color: #5a6268;
+}
+
+/* 結果表示エリア */
+#result {
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    height: 100px;
+}
