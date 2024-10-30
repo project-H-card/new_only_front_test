@@ -20,8 +20,11 @@ class FactorizationGame {
 
     // ターゲットの数を生成する（素因数分解の対象）
     generateTargetNumber() {
-        const randomIndex = Math.floor(Math.random() * this.primeNumbers.length);
-        this.targetNumber = this.primeNumbers[randomIndex] * this.primeNumbers[Math.floor(Math.random() * this.primeNumbers.length)];
+        // const randomIndex = Math.floor(Math.random() * this.primeNumbers.length);
+        // this.targetNumber = this.primeNumbers[randomIndex] * this.primeNumbers[Math.floor(Math.random() * this.primeNumbers.length)];
+        const maxNumber = Number(document.getElementById('max-number').value);
+        const minNumber = Number(document.getElementById('min-number').value);
+        this.targetNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
         document.getElementById('target-number').textContent = `目標: ${this.targetNumber}`;
     }
 
@@ -151,9 +154,9 @@ class FactorizationGame {
     // 素数ボタンを押されたとき
     checkIfPrime() {
         if (this.waiting) return; // 待機中なら何もしない
-        const currentProduct = this.calculateCurrentProduct();
         const resultDiv = document.getElementById('result');
-        if (this.primeNumbers.includes(currentProduct)) {
+        console.log(this.factorize(this.targetNumber));
+        if (this.factorize(this.targetNumber).length === 1) {
             resultDiv.textContent = `正解！(素数です)${this.waitTime}秒後に次の問題に進みます。`;
             this.waiting = true; // 待機状態をオン
             setTimeout(() => {
@@ -170,3 +173,21 @@ class FactorizationGame {
 document.addEventListener('DOMContentLoaded', () => {
     const game = new FactorizationGame();
 });
+
+const maxOfMinMax = 10000;
+const minOfMinMax = 10;
+document.getElementById("min-number").addEventListener("change", function() {
+    if (Number(this.value) < minOfMinMax) {
+        this.value = minOfMinMax;
+    } else if (Number(this.value) > maxOfMinMax) {
+        this.value = maxOfMinMax;
+    }
+});
+document.getElementById("max-number").addEventListener("change", function() {
+    if (Number(this.value) < minOfMinMax) {
+        this.value = minOfMinMax;
+    } else if (Number(this.value) > maxOfMinMax) {
+        this.value = maxOfMinMax;
+    }
+});
+
